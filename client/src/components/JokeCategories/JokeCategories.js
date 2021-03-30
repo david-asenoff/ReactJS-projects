@@ -1,24 +1,32 @@
 import { Component, React } from 'react';
 import { Link, Router } from "react-router-dom";
-import { Button, Card, Badge } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
+import styles from './JokeCategories.module.css';
+import JokeCategory from '../JokeCategory/JokeCategory';
+import {getAll} from '../../services/jokeCategoriesService';
 
 class JokeCategories extends Component {
-  constructor(props) {
-        super(props);
-      }    
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      jokeCategories: [],
+    }
+
+  }
+
+  componentDidMount() {
+    console.log('joke categories rendered');
+    getAll().then(x=>this.setState({jokeCategories: x}));
+}
+
   render() {
     return (
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src={this.props.imageSource} />
-  <Card.Body>
-    <Card.Title>{this.props.title}
-    <Badge pill variant="info">
-    {this.props.text}
-    </Badge>
-    </Card.Title>
-    <Button variant="primary">Go somewhere</Button>
-  </Card.Body>
-</Card>
+      <div className={styles.rowcenter}>
+{this.state.jokeCategories.map(x => {
+  return <JokeCategory key={x.id} id={x.id} name={x.name} pictureUrl={x.pictureUrl} jokesCount={x.jokesCount}/>
+})}
+</div>
     );
   }
 }
