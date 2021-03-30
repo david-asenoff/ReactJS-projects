@@ -15,13 +15,10 @@ class Header extends Component {
 <Nav fill variant="tabs" defaultActiveKey="/home">
 
   <Nav.Item>
-    <Nav.Link href="/home">Начало</Nav.Link>
+    <Nav.Link href="/">Начало</Nav.Link>
   </Nav.Item>
   <Nav.Item>
-    <Nav.Link href="/home">Вицове</Nav.Link>
-  </Nav.Item>
-  <Nav.Item>
-    <Nav.Link href="/home">Контакти</Nav.Link>
+    <Nav.Link href="/about">Контакти</Nav.Link>
   </Nav.Item>
   <Nav.Item>
     <Nav.Link href="/home">Вход</Nav.Link>
