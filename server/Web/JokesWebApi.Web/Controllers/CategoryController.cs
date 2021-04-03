@@ -9,12 +9,20 @@
     using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
-    public class HomeController : ControllerBase
+    public class CategoryController : ControllerBase
     {
-        [HttpGet("/")]
+        [HttpGet("category/all")]
         public IActionResult Index()
         {
-            var result = "/";
+            var result = "category/all";
+            return this.Ok(result);
+        }
+
+        [HttpGet("category/{categoryId}")]
+        public IActionResult Category(string categoryId)
+        {
+            var result = "category/" + categoryId;
+
             return this.Ok(result);
         }
     }

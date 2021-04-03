@@ -9,12 +9,12 @@
     using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
-    public class HomeController : ControllerBase
+    public class JokeController : ControllerBase
     {
-        [HttpGet("/")]
-        public IActionResult Index()
+        [HttpGet("joke/{jokeId}")]
+        public IActionResult Index(string jokeId)
         {
-            var result = "/";
+            var result = "joke/" + jokeId;
             return this.Ok(result);
         }
     }
