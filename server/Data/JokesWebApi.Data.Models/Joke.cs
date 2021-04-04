@@ -1,12 +1,13 @@
-﻿using JokesWebApi.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-
-namespace JokesWebApi.Data.Models
+﻿namespace JokesWebApi.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Text;
+
+    using JokesWebApi.Data.Common.Models;
+
     public class Joke : BaseDeletableModel<string>
     {
         public Joke()

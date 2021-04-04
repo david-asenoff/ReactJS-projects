@@ -12,7 +12,6 @@
     using JokesWebApi.Services.Mapping;
     using JokesWebApi.Services.Messaging;
     using JokesWebApi.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;

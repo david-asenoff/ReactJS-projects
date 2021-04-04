@@ -2,7 +2,6 @@
 {
     using JokesWebApi.Services.Data;
     using JokesWebApi.Web.ViewModels.Administration.Dashboard;
-
     using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController

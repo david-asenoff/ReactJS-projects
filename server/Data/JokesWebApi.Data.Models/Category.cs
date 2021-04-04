@@ -1,10 +1,11 @@
-﻿using JokesWebApi.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JokesWebApi.Data.Models
+﻿namespace JokesWebApi.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using JokesWebApi.Data.Common.Models;
+
     public class Category : BaseDeletableModel<string>
     {
         public Category()

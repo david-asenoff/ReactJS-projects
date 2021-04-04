@@ -2,7 +2,6 @@
 {
     using JokesWebApi.Common;
     using JokesWebApi.Web.Controllers;
-
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 

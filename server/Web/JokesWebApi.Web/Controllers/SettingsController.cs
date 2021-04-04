@@ -7,7 +7,6 @@
     using JokesWebApi.Data.Models;
     using JokesWebApi.Services.Data;
     using JokesWebApi.Web.ViewModels.Settings;
-
     using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController
