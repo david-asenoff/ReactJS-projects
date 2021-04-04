@@ -9,6 +9,11 @@ namespace JokesWebApi.Data.Models
 {
     public class Joke : BaseDeletableModel<string>
     {
+        public Joke()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         public string Content { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
@@ -19,6 +24,5 @@ namespace JokesWebApi.Data.Models
         public virtual ApplicationUser Author { get; set; }
 
         public virtual ICollection<Raiting> Raitings { get; set; }
-
     }
 }
