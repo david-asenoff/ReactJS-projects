@@ -1,6 +1,6 @@
 import { Component } from 'react';
 // import { Link, Router } from "react-router-dom";
-// import { Container, Row } from 'react-bootstrap';
+import { Container, Row, CardGroup } from 'react-bootstrap';
 import Joke from '../Joke/Joke';
 import {getJokesByCategoryId} from '../../services/jokeCategoriesService'
 
@@ -20,11 +20,11 @@ class Jokes extends Component {
 
   render() {
     return (
-      <div>
+      <Row className="justify-content-md-center">
 {this.state.jokesFromCategory.map(x => {
-  return <Joke key={x.id} id={x.id} content={x.content} authorId={x.authorId}/>
+  return <Joke key={x.id} id={x.id} content={x.content} authorId={x.authorId} createdOn={x.createdOn} pictureUrl={x.pictureUrl}/>
 })}
-</div>
+  </Row>
     );
   }
 }

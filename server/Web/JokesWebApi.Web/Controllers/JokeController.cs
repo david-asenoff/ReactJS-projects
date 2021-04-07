@@ -30,5 +30,13 @@
             var result = this.jokesRepository.All().FirstOrDefault(x => x.Id == jokeId);
             return this.Ok(result);
         }
+
+        [HttpDelete("joke/{jokeId}")]
+        public IActionResult OnDelete(string jokeId)
+        {
+            var result = this.jokesRepository.All().FirstOrDefault(x => x.Id == jokeId);
+            result.DeletedOn = DateTime.UtcNow;
+            return this.Ok();
+        }
     }
 }
