@@ -27,55 +27,56 @@
                 new Joke
                 {
      Content = "Белият дом. На вратата се звъни. Тръмп отваря и вижда Байдън с непознат мъж:\n- Здравейте, аз съм Жоро Игнатов от \"Съдебен спор\"...",
-     Categories = categories,
+     Categories = categories, PictureUrl = "https://i.ibb.co/V99GHgJ/1AlnHyJ.png",
                 },
                 new Joke
                 {
      Content = "Бочко отишъл в подножието на Рила с джипката, слязъл и посочил Мусала:\n\"Ей тоя връх ГЕРБ го вдигна. Лично разпоредих да се отпуснат парите. Допреди ГЕРБ тука имаше само едно кално поле.\"",
-     Categories = categories,
+     Categories = categories, PictureUrl = "https://i.ibb.co/V99GHgJ/1AlnHyJ.png",
                 },
                 new Joke
                 {
      Content = "Във Виетнам е работела фабрика, която перяла, изсушавала и отново продавали стари използвани презервативи.\nЩе е много трудно да се намери по-точно описание за работата на нашата Централна Избирателна Комисия.",
-     Categories = categories,
+     Categories = categories, PictureUrl = "https://i.ibb.co/V99GHgJ/1AlnHyJ.png",
                 },
                 new Joke
                 {
      Content = "ГЕОМЕТРИЯ ЗА ДЕПУТАТИ\nВ триъгълника на властта в България има поне два тъпи ъгли.\nКои са те?\nОтговор А: Ъгъл ТКП и ъгъл ТБТ.\nОтговор Б: Това не може да е триъгълник (Питагор).\nОтговор В: Това не може да е влст.",
-     Categories = categories,
+     Categories = categories, PictureUrl = "https://i.ibb.co/cgrpDF9/dear-politicians-218615.png",
                 },
                 new Joke
                 {
      Content = "Али Баба и четиридесет е разбойника по български:\nАли Баба и разбойниците му крадат и от богати, и от бедни, а парите трупат в шкафчето.",
-     Categories = categories,
+     Categories = categories, PictureUrl = "https://i.ibb.co/NWM9d5j/f2xw1kjibrey.jpg",
                 },
                 new Joke
                 {
      Content = "- Кате, как кръстихте детето?\n- Бойко - да му е пълно шкафчето!",
-     Categories = categories,
+     Categories = categories, PictureUrl = "https://i.ibb.co/sH55gTz/Funny-Political-Meme-The-Problem-With-Politics-Is-That-Its-Full-Of-Politicians-Picture.jpg",
                 },
                 new Joke
                 {
      Content = "- Защо Хитлер е игреаел шах само с белите фигури?\n- Защото бил расист.",
-     Categories = categories,
+     Categories = categories, PictureUrl = "https://i.ibb.co/MZDgZHm/images.jpg",
                 },
                 new Joke
                 {
      Content = "- А бе наборе, знаеш ли че пенсиите ни били неприлично по-високи от заплатите на правителството и парламента?\n- И какво сега ще ни ги зимат ли?\n- Не бе, за сега щели само да ни плашат от телевизора и да ни глобяват.",
-     Categories = categories,
+     Categories = categories, PictureUrl = "https://i.ibb.co/wg7xVMW/Klein-meme1.jpg",
                 },
                 new Joke
                 {
      Content = "18 годишните в щатите:\n- Може ли цигара? А бира?\nАмериканското правителство:\n- Не, но може да отидете на война с Иран.",
-     Categories = categories,
+     Categories = categories, PictureUrl = "https://i.ibb.co/7yRw228/Memes-Main-Politics.jpg",
                 },
                 new Joke
                 {
-     Content = "Само по-старите хора си спомнят нова година без нова цена на водата.",
-     Categories = categories,
+                    Content = "Само по-старите хора си спомнят нова година без нова цена на водата.",
+                    Categories = categories,
+                    PictureUrl = "https://i.ibb.co/qsd5Sv9/images-1.jpg",
                 },
             };
-            await dbContext.Jokes.AddRangeAsync(politicJokes);
+await dbContext.Jokes.AddRangeAsync(politicJokes);
 
             // ПРИКАЗНИ
             categories.RemoveAll(x => true);

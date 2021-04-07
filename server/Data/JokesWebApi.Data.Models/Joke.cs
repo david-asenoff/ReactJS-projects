@@ -17,6 +17,8 @@
 
         public string Content { get; set; }
 
+        public string PictureUrl { get; set; }
+
         public virtual ICollection<Category> Categories { get; set; }
 
         [ForeignKey(nameof(ApplicationUser))]

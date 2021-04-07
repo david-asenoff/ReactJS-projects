@@ -10,6 +10,7 @@
     using JokesWebApi.Web.ViewModels;
     using JokesWebApi.Web.ViewModels.JokesCategories;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
 
     [ApiController]
     public class CategoryController : ControllerBase
@@ -44,7 +45,12 @@
         public IActionResult JokesByCategoryId(string categoryId)
         {
             var category = this.categoryRepository.All().FirstOrDefault(x => x.Id == categoryId);
-            var result = this.jokesRepository.All().Where(x => x.Categories.Any(x => x.Id == categoryId));
+            var result = this.jokesRepository
+                .All()
+                .Where(x => x.Categories
+                .Any(x => x.Id == categoryId))
+                .Include(x => x.Author)
+                .Include(x => x.Raitings);
             return this.Ok(result);
         }
     }
