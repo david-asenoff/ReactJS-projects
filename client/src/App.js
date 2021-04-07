@@ -6,6 +6,7 @@ import JokeCategories from './components/JokeCategories/JokeCategories';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import About from './components/About/About';
+import Jokes from './components/Jokes/Jokes'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={JokeCategories} />
         <Route exact path="/About" component={About} />
+        <Route exact path="/Category/:categoryId/Jokes" component={Jokes}/>
       </Switch>
       <Footer name='Copyright © 2021. Reactive Jokes'/>
     </div>

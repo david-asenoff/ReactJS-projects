@@ -1,5 +1,9 @@
 const serverUrl = 'https://localhost:5001';
 
-const getAllJokeCategories = `${serverUrl}/jokescategories/getall`;
+const getAllJokeCategories = `${serverUrl}/category/all`;
+const getCategoryById = (x) => `${serverUrl}/category/${x}`;
+const getAllJokesFromCategoryByCategoryId = (x) => `${serverUrl}/category/${x}/jokes`;
 
-export {getAllJokeCategories};
+const getJokeByHisId = (x) => `${serverUrl}/joke/${x}`;
+
+export {getAllJokeCategories, getCategoryById, getAllJokesFromCategoryByCategoryId, getJokeByHisId};

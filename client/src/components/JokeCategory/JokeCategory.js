@@ -8,7 +8,7 @@ class JokeCategory extends Component {
       }    
   render() {
     return (
-<Card style={{ width: '18rem' }} id={this.props.id} key={this.props.key}>
+<Card style={{ width: '18rem' }} id={this.props.id} key={this.props.id}>
   <Card.Img variant="top" src={this.props.pictureUrl} />
   <Card.Body>
     <Card.Title>{this.props.name}
@@ -16,7 +16,9 @@ class JokeCategory extends Component {
     {this.props.jokesCount}
     </Badge>
     </Card.Title>
+    <Link to={`category/${this.props.id}/jokes`}>
     <Button variant="primary">Разгледай</Button>
+    </Link>
   </Card.Body>
 </Card>
     );
