@@ -51,18 +51,18 @@
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins(
-                            "http://localhost:3000")
-                         .AllowAnyHeader()
-                                                  .AllowAnyMethod();
+                        builder.AllowAnyHeader()
+                         .AllowAnyMethod()
+                         .AllowAnyOrigin();
                     });
             });
-
-            services.AddControllersWithViews(
-                options =>
-                    {
-                        options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                    }).AddRazorRuntimeCompilation();
+            services.AddControllers();
+            // When clients make a Delete request without token server will return 400 response.
+            //services.AddControllersWithViews(
+            //    options =>
+            //        {
+            //            options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            //        }).AddRazorRuntimeCompilation();
             services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
 

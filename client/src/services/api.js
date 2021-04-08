@@ -1,4 +1,4 @@
-const serverUrl = 'https://localhost:5001';
+const serverUrl = 'https://localhost:44319';
 
 const getAllJokeCategories = `${serverUrl}/category/all`;
 const getCategoryById = (x) => `${serverUrl}/category/${x}`;

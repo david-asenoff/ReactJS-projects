@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
+    using System.Threading.Tasks;
     using JokesWebApi.Data.Common.Repositories;
     using JokesWebApi.Data.Models;
     using JokesWebApi.Web.ViewModels;
@@ -25,18 +26,20 @@
         }
 
         [HttpGet("joke/{jokeId}")]
-        public IActionResult Index(string jokeId)
+        public IActionResult Get(string jokeId)
         {
             var result = this.jokesRepository.All().FirstOrDefault(x => x.Id == jokeId);
             return this.Ok(result);
         }
 
-        [HttpDelete("joke/{jokeId}")]
-        public IActionResult OnDelete(string jokeId)
+        [HttpDelete]
+        [Route("joke/{id}")]
+        public async Task<IActionResult> DeleteAsync(string id)
         {
-            var result = this.jokesRepository.All().FirstOrDefault(x => x.Id == jokeId);
-            result.DeletedOn = DateTime.UtcNow;
-            return this.Ok();
+            var result = this.jokesRepository.All().FirstOrDefault(x => x.Id == id);
+            this.jokesRepository.Delete(result);
+            await this.jokesRepository.SaveChangesAsync();
+            return this.Ok(result);
         }
     }
 }

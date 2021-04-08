@@ -7,7 +7,8 @@ export const getById = (x) => {
 };
 
 export const deleteById = (x) => {
-    return fetch(deleteJokeByHisId(x), { method: 'DELETE' })
+    return fetch(deleteJokeByHisId(x), 
+    { method: 'DELETE' })
     .then(result => result.json())
     .catch( error=> console.log('Error returned from getting joke by id:'+ error));
 };
