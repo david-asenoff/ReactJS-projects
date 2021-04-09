@@ -14,16 +14,18 @@ class Jokes extends Component {
     console.log('JOKES rendered');
   }
 
-  removeJoke(jokeId) {
+  removeJoke=(jokeKey)=>{
     try {
-      deleteById(jokeId);
-
-      this.setState(state => ({
-        jokesFromCategory: this.state.jokesFromCategory.filter(function(value, index, arr){ 
-          return value.id!==jokeId;
-      })}));
+      const copyJokesArray = this.state.jokesFromCategory.filter(x => x.id!==jokeKey);
+      console.log('The new filtered copy is:', copyJokesArray);
+      this.setState( prevState => ({
+        ...prevState,
+        jokesFromCategory:copyJokesArray
+    }));
+      console.log('The new jokesArray is: ', this.state.jokesFromCategory)
+      deleteById(jokeKey);
     } catch (error) {
-      console.log(`Coudn't remove joke with id ${jokeId}: ${error}`);
+      console.log(`Coudn't remove joke with id ${jokeKey}: ${error}`);
     }
 
   }
@@ -35,14 +37,14 @@ class Jokes extends Component {
   render() {
     return (
       <Row className="justify-content-md-center">
-{this.state.jokesFromCategory.map(x => {
-  return <Joke key={x.id} 
-                id={x.id} 
-                content={x.content} 
-                authorId={x.authorId} 
-                createdOn={x.createdOn} 
-                pictureUrl={x.pictureUrl}
-                removeJoke={this.removeJoke}/>
+{this.state.jokesFromCategory.map((joke, index) => {
+  return <Joke key={joke.id} 
+                id={joke.id} 
+                content={joke.content} 
+                authorId={joke.authorId} 
+                createdOn={joke.createdOn} 
+                pictureUrl={joke.pictureUrl}
+                removeJoke={this.removeJoke.bind(this,joke.id)}/>
 })}
   </Row>
     );

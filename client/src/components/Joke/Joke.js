@@ -33,16 +33,14 @@ class Joke extends Component {
           </p>
 					<hr />
 					<div className="d-flex justify-content-end">
-          <Button variant="outline-danger" onClick={() => this.props.removeJoke(this.props.id)}>
+          <Button variant="outline-danger" onClick={this.props.removeJoke}>
 							Да
             </Button>
 						<Button onClick={handleHide} variant="outline-success">
 							Не
-            </Button>
-            
+          </Button>
 					</div>
 				</Alert>
-
 				{!this.state.show && <Button onClick={handleShow} variant="danger">Изтрий</Button>}
     </Card.Footer>
   </Card>
