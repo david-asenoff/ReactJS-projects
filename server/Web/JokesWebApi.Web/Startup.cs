@@ -20,6 +20,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
     public class Startup
     {
@@ -56,7 +57,8 @@
                          .AllowAnyOrigin();
                     });
             });
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             // When clients make a Delete request without token server will return 400 response.
             //services.AddControllersWithViews(
             //    options =>

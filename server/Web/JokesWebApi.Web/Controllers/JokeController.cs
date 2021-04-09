@@ -10,6 +10,7 @@
     using JokesWebApi.Web.ViewModels;
     using JokesWebApi.Web.ViewModels.JokesCategories;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
 
     [ApiController]
     public class JokeController : ControllerBase
@@ -28,7 +29,9 @@
         [HttpGet("joke/{jokeId}")]
         public IActionResult Get(string jokeId)
         {
-            var result = this.jokesRepository.All().FirstOrDefault(x => x.Id == jokeId);
+            var result = this.jokesRepository.All()
+                .Include(x => x.Categories)
+                .FirstOrDefault(x => x.Id == jokeId);
             return this.Ok(result);
         }
 

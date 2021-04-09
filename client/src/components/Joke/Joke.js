@@ -8,41 +8,31 @@ class Joke extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { show: false };
+    this.state = { show: false, deleteButtonText:'Изтрий' };
   }
   componentDidUpdate() {
     console.log('updated');
   }
   render() {
-    const handleHide = () => this.setState({ show: false });
-		const handleShow = () => this.setState({ show: true });
+    const deleteAlertHideSwitch = () => this.setState({ show: !this.state.show });
+    const deleteButtonTextSwitch = () => this.setState({ show: !this.state.show, deleteButtonText: this.state.deleteButtonText=="Изтрий"?"Откажи":"Изтрий" });;
     return (
       <Col sm={12}>
-   <Card key={this.props.id}>
-   <Card.Header as="small">от {this.props.authorId??'Anonymous'}, {Moment(this.props.createdOn).format('MM-DD-YYYY')}</Card.Header>
+   <Card key={this.props.id} className="mt-5">
+   <Card.Header as="small" className="p-1">
+     от {this.props.authorId??'Anonymous'}, 
+     {Moment(this.props.createdOn).format('MM-DD-YYYY')}
+     {this.props.content!=null?
+     <Link to={`/joke/${this.props.id}`}>
+     <Button variant="outline-primary" size="sm" className="ml-2">Редакция</Button>
+     </Link>:
+     ''}
+     </Card.Header>
     <Card.Body>
       <Card.Text>
       {this.props.content}
       </Card.Text>
     </Card.Body>
-    <Card.Footer as="small">
-    <Alert show={this.state.show} variant="success" style={{ maxWidth: 500 }}>
-					<Alert.Heading>Искате ли да изтриете този виц?</Alert.Heading>
-					<p>
-						Наистина ли искате да изтриете този виц? - {this.props.content}
-          </p>
-					<hr />
-					<div className="d-flex justify-content-end">
-          <Button variant="outline-danger" onClick={this.props.removeJoke}>
-							Да
-            </Button>
-						<Button onClick={handleHide} variant="outline-success">
-							Не
-          </Button>
-					</div>
-				</Alert>
-				{!this.state.show && <Button onClick={handleShow} variant="danger">Изтрий</Button>}
-    </Card.Footer>
   </Card>
 </Col>
     );
