@@ -13,13 +13,14 @@ export const deleteById = (x) => {
     .catch( error=> console.log('Error returned from getting joke by id:'+ error));
 };
 
-export const updateById = (id) => {
-    return fetch(updateByHisId(id), {
-    headers: { 'Content-Type': 'application/json'},
+export const updateById = (x) => {
+    return fetch(updateByHisId(x.id), {
     method: 'PUT' ,
-    body: {id: id}})
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify(x)
+                                    })
     .then(result => result.json())
-    .catch( error=> console.log('Error returned from getting joke by id:'+ error));
+    .catch( error=> console.log('Error returned from updating joke by id:'+ error));
 };
 
 export const createJoke = (x) => {

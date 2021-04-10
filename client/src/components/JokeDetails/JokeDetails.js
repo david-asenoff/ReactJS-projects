@@ -21,7 +21,7 @@ class JokeDetails extends Component {
       editButtonText: 'Редактирай',
       showUpdateAlert: false,
       newJoke: '',
-      newCategories:[],
+      newCategories: [],
     };
   }
   componentDidUpdate() {
@@ -37,51 +37,42 @@ class JokeDetails extends Component {
     const deleteAlertHideSwitch = () => this.setState({ showDeleteAlert: !this.state.showDeleteAlert });
     const deleteButtonTextSwitch = () => this.setState({ showDeleteAlert: !this.state.showDeleteAlert, deleteButtonText: this.state.deleteButtonText == "Изтрий" ? "Откажи" : "Изтрий" });
     const editFormHideSwitch = () => this.setState({ showEditForm: !this.state.showEditForm });
-    const editButtonTextSwitch = () => this.setState({ showUpdateAlert: !this.state.showUpdateAlert,showEditForm: !this.state.showEditForm, editButtonText: this.state.editButtonText === "Редактирай" ? "Откажи" : "Редактирай" });
-    const deleteThisJoke = () => {History.push("/") 
-                                  deleteById(this.state.joke.id)};
-    const updateThisJoke = () => {updateById(this.state.joke.id)};
+    const editButtonTextSwitch = () => this.setState({ showUpdateAlert: !this.state.showUpdateAlert, showEditForm: !this.state.showEditForm, editButtonText: this.state.editButtonText === "Редактирай" ? "Откажи" : "Редактирай" });
+    const deleteThisJoke = () => {
+      History.push("/")
+      deleteById(this.state.joke.id)
+    };
+    const updateThisJoke = () => {
+      const editedText = document.getElementById('editedText').value;
+      const id = this.state.joke.id;
+      updateById({ id, editedText })
+    };
     return (
       <Col sm={12}>
         <Card key={this.state.joke.id}>
           <Card.Header as="small">от {this.props.authorId ?? 'Anonymous'}, {Moment(this.props.createdOn).format('MM-DD-YYYY')}</Card.Header>
-          {!this.state.showEditForm?
-          <Card.Body>
-          <Card.Text>
-            {this.state.joke.content}
-          </Card.Text>
-        </Card.Body>
-          :
-          <Form show={this.state.showEditForm}>
+          {!this.state.showEditForm ?
+            <Card.Body>
+              <Card.Text>
+                {this.state.joke.content}
+              </Card.Text>
+            </Card.Body>
+            :
+            <Form show={this.state.showEditForm}>
               <Form.Group controlId="editJoke">
                 <Form.Label>Съдържание</Form.Label>
                 <Form.Control id="editedText" as="textarea" placeholder="Съдържание" defaultValue={this.state.joke.content} />
               </Form.Group>
-              <Form.Group controlId="exampleForm.ControlSelect2">
-                <Form.Label>Категории: </Form.Label>
-                <br></br>
-                {this.state.jokeCategories.map(x => {
-                  return <Form.Check
-                    custom
-                    inline
-                    label={x.name}
-                    type='checkbox'
-                    id={x.id}
-                    key={x.id}
-                    checked={this.state.joke.categories.map(x => x.id).includes(x.id) ? 'checked' : undefined}
-                  />
-                })}
-              </Form.Group>
             </Form>
           }
-          
+
           <Card.Footer as="small">
-            {this.state.showDeleteButton?<Button onClick={deleteAlertHideSwitch, deleteButtonTextSwitch} variant="danger">
+            {this.state.showDeleteButton ? <Button onClick={deleteAlertHideSwitch, deleteButtonTextSwitch} variant="danger">
               {this.state.deleteButtonText}
-            </Button>:""}
-            {this.state.showEditButton?<Button onClick={editFormHideSwitch, editButtonTextSwitch} variant="warning">
+            </Button> : ""}
+            {this.state.showEditButton ? <Button onClick={editFormHideSwitch, editButtonTextSwitch} variant="warning">
               {this.state.editButtonText}
-            </Button>:""}
+            </Button> : ""}
             {/* DELETE */}
             <Alert show={this.state.showDeleteAlert} variant="success" style={{ maxWidth: 500 }}>
               <Alert.Heading>Искате ли да изтриете този виц?</Alert.Heading>
@@ -105,13 +96,13 @@ class JokeDetails extends Component {
               <div className="d-flex justify-content-end">
                 <Button variant="outline-danger" onClick={updateThisJoke}>
                   Да, редактирай
-            </Button>
+                </Button>
                 <Button onClick={deleteAlertHideSwitch, deleteButtonTextSwitch} variant="outline-success">
                   Не, не редактирай
           </Button>
               </div>
             </Alert>
-            
+
           </Card.Footer>
         </Card>
       </Col>

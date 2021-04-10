@@ -7,8 +7,6 @@ namespace JokesWebApi.Web.ViewModels.Jokes
     {
         public string Id { get; set; }
 
-        public JokeViewModel Joke { get; set; }
-
-        public JokesCategoryViewModel Category { get; set; }
+        public string EditedText { get; set; }
     }
 }

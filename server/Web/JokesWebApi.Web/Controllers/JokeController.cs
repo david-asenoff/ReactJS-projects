@@ -51,6 +51,7 @@
         public async Task<IActionResult> PutAsync(JokeUpdateViewModel model)
         {
             var result = this.jokesRepository.All().FirstOrDefault(x => x.Id == model.Id);
+            result.Content = model.EditedText;
             this.jokesRepository.Update(result);
             await this.jokesRepository.SaveChangesAsync();
             return this.Ok(result);
