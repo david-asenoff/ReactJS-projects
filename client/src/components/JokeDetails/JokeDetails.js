@@ -65,7 +65,6 @@ class JokeDetails extends Component {
               </Form.Group>
             </Form>
           }
-
           <Card.Footer as="small">
             {this.state.showDeleteButton ? <Button onClick={deleteAlertHideSwitch, deleteButtonTextSwitch} variant="danger">
               {this.state.deleteButtonText}
@@ -102,7 +101,6 @@ class JokeDetails extends Component {
           </Button>
               </div>
             </Alert>
-
           </Card.Footer>
         </Card>
       </Col>
