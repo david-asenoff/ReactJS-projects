@@ -9,10 +9,11 @@ class CreateJoke extends Component {
   state = { content:'', name:'', pictureUrl:'' };
     
   handleSubmit = async (event) => {
+    event.preventDefault();
     const name= this.state.name;
     const pictureUrl= this.state.pictureUrl;
     const content= this.state.content;
-    createJoke(name, pictureUrl, content)
+    createJoke({name, pictureUrl, content})
   };
 
   render() {

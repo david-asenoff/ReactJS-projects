@@ -13,6 +13,7 @@
         public Joke()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Categories = new List<Category>();
         }
 
         public string Content { get; set; }

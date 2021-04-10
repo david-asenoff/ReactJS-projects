@@ -58,21 +58,21 @@
 
         [HttpPost]
         [Route("joke/create")]
-        public async Task<IActionResult> PostAsync(string name, string content, string pictureUrl)
+        public async Task<IActionResult> PostAsync(JokeCreateViewModel model)
         {
-            var joke = new Joke { Content = content };
-            var category = this.categoryRepository.All().FirstOrDefault(x => x.Name == name);
+            var joke = new Joke { Content = model.Content };
+            var category = this.categoryRepository.All().FirstOrDefault(x => x.Name == model.Name);
             if (category == null)
             {
-                category = new Category { Name = name, PictureUrl = pictureUrl };
+                category = new Category { Name = model.Name, PictureUrl = model.PictureUrl };
                 await this.categoryRepository.AddAsync(category);
             }
-
-            await this.categoryRepository.SaveChangesAsync();
-            joke.Categories.ToList().Add(category);
+            
+            joke.Categories.Add(category);
             await this.jokesRepository.AddAsync(joke);
             await this.jokesRepository.SaveChangesAsync();
-            return this.Ok(joke);
+            await this.categoryRepository.SaveChangesAsync();
+            return this.Ok();
         }
     }
 }

@@ -22,11 +22,11 @@ export const updateById = (id) => {
     .catch( error=> console.log('Error returned from getting joke by id:'+ error));
 };
 
-export const createJoke = (name, pictureUrl, content) => {
-    return fetch(createNewJoke(), {
-    headers: { 'Content-Type': 'application/json'},
+export const createJoke = (x) => {
+    return fetch("https://localhost:44319/joke/create", {
     method: 'POST' ,
-    body: JSON.stringify(name, pictureUrl, content)
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify(x)
                                     })
     .then(result => result.json())
     .catch( error=> console.log('Error returned from getting joke by id:'+ error));
