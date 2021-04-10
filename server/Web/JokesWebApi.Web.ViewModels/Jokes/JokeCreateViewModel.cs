@@ -1,8 +1,9 @@
-﻿using JokesWebApi.Web.ViewModels.JokesCategories;
-using System.Collections.Generic;
-
-namespace JokesWebApi.Web.ViewModels.Jokes
+﻿namespace JokesWebApi.Web.ViewModels.Jokes
 {
+    using System.Collections.Generic;
+
+    using JokesWebApi.Web.ViewModels.JokesCategories;
+
     public class JokeCreateViewModel
     {
         public string Content { get; set; }

@@ -1,17 +1,29 @@
-import { Component, React } from 'react';
+import { React, useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 import { Link, Router } from "react-router-dom";
 import { Nav } from 'react-bootstrap';
 import styles from './Header.module.css';
 import Logo from "../Logo/Logo";
 
-class Header extends Component {
-  constructor(props) {
-        super(props);
-      }    
-  render() {
-    return (
+const Header = () => {
+  const { authInfo } = useContext(UserContext);
+  const { isAuthenticated } = authInfo;
+  return (
       <div>
-
+               {!isAuthenticated ? (
+          <li>
+            <Link data-item="Login" to="/Login">
+              Login
+            </Link>
+          </li>
+        ) : null}
+        {!isAuthenticated ? (
+          <li>
+            <Link data-item="Register" to="/Register">
+              Register
+            </Link>
+          </li>
+        ) : null}
 <Nav fill variant="tabs" defaultActiveKey="/home">
 
   <Nav.Item>
@@ -30,7 +42,6 @@ class Header extends Component {
 <Logo/>
 </div>
     );
-  }
-}
+  };
 
 export default Header;

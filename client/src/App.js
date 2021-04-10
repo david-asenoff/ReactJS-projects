@@ -13,16 +13,17 @@ import history from './components/History/History';
 import isAuth from "./components/Hoc/isAuth";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import { useState, useEffect } from "react";
+import UserContext from "./contexts/UserContext";
 
 function App() {
   const [user, setUser] = useState(null);
   const authInfo = {
     isAuthenticated: Boolean(user),
-    email: user?.email,
   };
   return (
     <div className="App">
-      <AuthContext.Provider value={{ userInfo: [user, setUser], authInfo: authInfo }}>
+      <UserContext.Provider value={{ userInfo: [user, setUser], authInfo: authInfo }}>
       <Header name='Heading'></Header>
       <Switch>
       <Router history={history}>
@@ -39,12 +40,16 @@ function App() {
               />
         <Route exact path="/About" component={About} />
         <Route exact path="/Category/:categoryId/Jokes" component={Jokes}/>
-        <Route exact path="/Joke/:jokeId" component={JokeDetails}/>
+        <Route
+                exact
+                path="/Joke/:jokeId"
+                component={isAuth(JokeDetails)}
+              />
         <Route exact path="/Add/Joke" component={CreateJoke}/>
         </Router>
       </Switch>
       <Footer name='Copyright © 2021. Reactive Jokes'/>
-      </AuthContext.Provider>
+      </UserContext.Provider>
     </div>
   );
 }

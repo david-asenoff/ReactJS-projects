@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace JokesWebApi.Data.Migrations
+﻿namespace JokesWebApi.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddPictureUrlToJoke : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
