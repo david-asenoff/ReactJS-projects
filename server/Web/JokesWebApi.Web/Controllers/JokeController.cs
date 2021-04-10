@@ -44,5 +44,15 @@
             await this.jokesRepository.SaveChangesAsync();
             return this.Ok(result);
         }
+
+        [HttpPut]
+        [Route("joke/{id}")]
+        public async Task<IActionResult> PutAsync(string id, string content, string[] categories)
+        {
+            var result = this.jokesRepository.All().FirstOrDefault(x => x.Id == id);
+            this.jokesRepository.Delete(result);
+            await this.jokesRepository.SaveChangesAsync();
+            return this.Ok(result);
+        }
     }
 }
