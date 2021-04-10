@@ -8,6 +8,7 @@
     using JokesWebApi.Data.Common.Repositories;
     using JokesWebApi.Data.Models;
     using JokesWebApi.Web.ViewModels;
+    using JokesWebApi.Web.ViewModels.Jokes;
     using JokesWebApi.Web.ViewModels.JokesCategories;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
@@ -47,12 +48,31 @@
 
         [HttpPut]
         [Route("joke/{id}")]
-        public async Task<IActionResult> PutAsync(string id, string content, string[] categories)
+        public async Task<IActionResult> PutAsync(JokeUpdateViewModel model)
         {
-            var result = this.jokesRepository.All().FirstOrDefault(x => x.Id == id);
-            this.jokesRepository.Delete(result);
+            var result = this.jokesRepository.All().FirstOrDefault(x => x.Id == model.Id);
+            this.jokesRepository.Update(result);
             await this.jokesRepository.SaveChangesAsync();
             return this.Ok(result);
+        }
+
+        [HttpPost]
+        [Route("joke/create")]
+        public async Task<IActionResult> PostAsync(string name, string content, string pictureUrl)
+        {
+            var joke = new Joke { Content = content };
+            var category = this.categoryRepository.All().FirstOrDefault(x => x.Name == name);
+            if (category == null)
+            {
+                category = new Category { Name = name, PictureUrl = pictureUrl };
+                await this.categoryRepository.AddAsync(category);
+            }
+
+            await this.categoryRepository.SaveChangesAsync();
+            joke.Categories.ToList().Add(category);
+            await this.jokesRepository.AddAsync(joke);
+            await this.jokesRepository.SaveChangesAsync();
+            return this.Ok(joke);
         }
     }
 }

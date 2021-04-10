@@ -2,7 +2,7 @@ import { Component, React } from 'react';
 import { Card, Col, Button, Alert, Form } from 'react-bootstrap';
 import Moment from 'moment';
 import { getAll } from '../../services/jokeCategoriesService';
-import { getById, deleteById } from '../../services/jokesService';
+import { getById, deleteById, updateById } from '../../services/jokesService';
 import History from './../History/History'
 
 class JokeDetails extends Component {
@@ -20,15 +20,18 @@ class JokeDetails extends Component {
       showEditForm: false,
       editButtonText: 'Редактирай',
       showUpdateAlert: false,
+      newJoke: '',
+      newCategories:[],
     };
   }
   componentDidUpdate() {
     console.log('updated');
   }
-  componentDidMount() {
+  async componentDidMount() {
     console.log('joke details rendered');
-    getById(this.props.match.params.jokeId).then(x => this.setState({ joke: x }));
-    getAll().then(x => this.setState({ jokeCategories: x }));
+    await getById(this.props.match.params.jokeId).then(x => this.setState({ joke: x }));
+    await getAll().then(x => this.setState({ jokeCategories: x }));
+    this.setState({ newJoke: this.state.joke });
   }
   render() {
     const deleteAlertHideSwitch = () => this.setState({ showDeleteAlert: !this.state.showDeleteAlert });
@@ -37,6 +40,7 @@ class JokeDetails extends Component {
     const editButtonTextSwitch = () => this.setState({ showUpdateAlert: !this.state.showUpdateAlert,showEditForm: !this.state.showEditForm, editButtonText: this.state.editButtonText === "Редактирай" ? "Откажи" : "Редактирай" });
     const deleteThisJoke = () => {History.push("/") 
                                   deleteById(this.state.joke.id)};
+    const updateThisJoke = () => {updateById(this.state.joke.id)};
     return (
       <Col sm={12}>
         <Card key={this.state.joke.id}>
@@ -49,7 +53,7 @@ class JokeDetails extends Component {
         </Card.Body>
           :
           <Form show={this.state.showEditForm}>
-              <Form.Group controlId="formBasicEmail">
+              <Form.Group controlId="editJoke">
                 <Form.Label>Съдържание</Form.Label>
                 <Form.Control id="editedText" as="textarea" placeholder="Съдържание" defaultValue={this.state.joke.content} />
               </Form.Group>
@@ -99,7 +103,7 @@ class JokeDetails extends Component {
               <Alert.Heading>Искате ли да редактирате този виц?</Alert.Heading>
               <hr />
               <div className="d-flex justify-content-end">
-                <Button variant="outline-danger" onClick={this.state.joke.removeJoke}>
+                <Button variant="outline-danger" onClick={updateThisJoke}>
                   Да, редактирай
             </Button>
                 <Button onClick={deleteAlertHideSwitch, deleteButtonTextSwitch} variant="outline-success">

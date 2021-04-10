@@ -15,9 +15,9 @@ class JokeCategories extends Component {
 
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     console.log('joke categories rendered');
-    getAll().then(x=>this.setState({jokeCategories: x}));
+    await getAll().then(x=>this.setState({jokeCategories: x}));
 }
 
   render() {

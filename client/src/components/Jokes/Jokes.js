@@ -29,9 +29,9 @@ class Jokes extends Component {
     }
 
   }
-  componentDidMount() {
+  async componentDidMount() {
     console.log('jokes from category rendered');
-    getJokesByCategoryId(this.props.match.params.categoryId).then(x=>this.setState({jokesFromCategory: x}));
+    await getJokesByCategoryId(this.props.match.params.categoryId).then(x=>this.setState({jokesFromCategory: x}));
 }
 
   render() {

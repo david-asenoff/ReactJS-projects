@@ -24,7 +24,7 @@ class Header extends Component {
     <Nav.Link href="/home">Вход</Nav.Link>
   </Nav.Item>
   <Nav.Item>
-    <Nav.Link href="/home">Добави</Nav.Link>
+    <Nav.Link href="/add/joke">Добави</Nav.Link>
   </Nav.Item>
 </Nav>
 <Logo/>

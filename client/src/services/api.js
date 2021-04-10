@@ -6,5 +6,14 @@ const getAllJokesFromCategoryByCategoryId = (x) => `${serverUrl}/category/${x}/j
 
 const getJokeByHisId = (x) => `${serverUrl}/joke/${x}`;
 const deleteJokeByHisId = (x) => `${serverUrl}/joke/${x}`;
+const updateByHisId = (x) => `${serverUrl}/joke/${x}`;
+const createNewJoke = () => `${serverUrl}/joke/create`;
 
-export {getAllJokeCategories, getCategoryById, getAllJokesFromCategoryByCategoryId, getJokeByHisId, deleteJokeByHisId};
+
+export {getAllJokeCategories, 
+    getCategoryById, 
+    getAllJokesFromCategoryByCategoryId, 
+    getJokeByHisId, 
+    deleteJokeByHisId, 
+    updateByHisId,
+    createNewJoke};
