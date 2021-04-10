@@ -1,7 +1,6 @@
 import { Component, React } from 'react';
-import { Link, Router } from "react-router-dom";
-import { Container, Row, Toast, Card, CardGroup, Col, ButtonGroup, Button, Alert} from 'react-bootstrap';
-import styles from './Joke.module.css';
+import { Link } from "react-router-dom";
+import { Card, Col, Button} from 'react-bootstrap';
 import Moment from 'moment';
 
 class Joke extends Component {
