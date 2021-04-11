@@ -66,8 +66,8 @@ class JokeCategories extends Component {
           {this.state.postData}
           </div>
           <ReactPaginate
-            previousLabel={"prev"}
-            nextLabel={"next"}
+            previousLabel={"предишна"}
+            nextLabel={"следваща"}
             breakLabel={"..."}
             breakClassName={"break-me"}
             pageCount={this.state.pageCount}

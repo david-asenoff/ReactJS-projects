@@ -19,7 +19,7 @@ const Login = ({ history }) => {
         NotificationManager.info("Info message");
         break;
       case "success":
-        NotificationManager.success("Successful Login");
+        NotificationManager.success("Успешно влязохте в профила си!");
         break;
       case "warning":
         NotificationManager.warning(
@@ -29,7 +29,7 @@ const Login = ({ history }) => {
         );
         break;
       case "error":
-        NotificationManager.error("Wrong login credentials", "", 5000, () => {
+        NotificationManager.error("Грешно потребителско име или парола!", "", 5000, () => {
           alert("callback");
         });
         break;
@@ -53,9 +53,9 @@ const Login = ({ history }) => {
   };
   return (
     <Form onSubmit={onSubmitLoginHandler}>
-      <h1>Login</h1>
+      <h1>Вписване</h1>
       <Form.Group controlId="exampleForm.ControlInput1">
-    <Form.Label>Email address</Form.Label>
+    <Form.Label>Ел. поща</Form.Label>
         <Form.Control
           type="email"
           name="Email"
@@ -65,7 +65,7 @@ const Login = ({ history }) => {
       </Form.Group>
       <Form.Group  controlId="formPlaintextPassword">
     <Form.Label column sm="2">
-      Password
+      Парола
     </Form.Label>
         <Form.Control
           type="password"
@@ -75,7 +75,7 @@ const Login = ({ history }) => {
         />
       </Form.Group>
       <Button variant="primary" type="submit">
-    Login
+    Вход
   </Button>
     </Form>
   );

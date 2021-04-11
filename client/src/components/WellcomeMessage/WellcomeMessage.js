@@ -6,6 +6,6 @@ const WellcomeMessage = (props) => {
   const { isAuthenticated } = authInfo;
   const { userInfo } = useContext(UserContext);
 
-  return <>Welcome, {isAuthenticated ? userInfo[0] : "Guest"} !</>;
+  return <>Добре дошли, {isAuthenticated ? userInfo[0] : "Гост"} !</>;
 };
 export default WellcomeMessage;
