@@ -5,11 +5,14 @@ import { Nav } from 'react-bootstrap';
 import styles from './Header.module.css';
 import Logo from "../Logo/Logo";
 import WellcomeMessage from './../../components/WellcomeMessage/WellcomeMessage';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer} from 'react-notifications';
 
 const Header = () => {
   const { authInfo } = useContext(UserContext);
   const { isAuthenticated } = authInfo;
   return (
+    <>
     <div>
       <Nav fill variant="tabs" defaultActiveKey="/home">
         {!isAuthenticated ? (
@@ -43,6 +46,8 @@ const Header = () => {
       </Nav>
       <Logo />
     </div>
+    <NotificationContainer />
+    </>
   );
 };
 
