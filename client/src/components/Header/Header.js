@@ -9,39 +9,37 @@ const Header = () => {
   const { authInfo } = useContext(UserContext);
   const { isAuthenticated } = authInfo;
   return (
-      <div>
-               {!isAuthenticated ? (
-          <li>
-            <Link data-item="Login" to="/Login">
-              Login
-            </Link>
-          </li>
-        ) : null}
+    <div>
+      <Nav fill variant="tabs" defaultActiveKey="/home">
         {!isAuthenticated ? (
-          <li>
-            <Link data-item="Register" to="/Register">
-              Register
-            </Link>
-          </li>
-        ) : null}
-<Nav fill variant="tabs" defaultActiveKey="/home">
-
-  <Nav.Item>
-    <Nav.Link href="/">Начало</Nav.Link>
-  </Nav.Item>
-  <Nav.Item>
-    <Nav.Link href="/about">Контакти</Nav.Link>
-  </Nav.Item>
-  <Nav.Item>
-    <Nav.Link href="/home">Вход</Nav.Link>
-  </Nav.Item>
-  <Nav.Item>
-    <Nav.Link href="/add/joke">Добави</Nav.Link>
-  </Nav.Item>
-</Nav>
-<Logo/>
-</div>
-    );
-  };
+          <>
+            <Nav.Item>
+              <Nav.Link href="/Login">Вход</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/Register">Регистрация</Nav.Link>
+            </Nav.Item>
+          </>
+        ) :
+          <>
+            <Nav.Item>
+              <Nav.Link href="/">Начало</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/about">Контакти</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/add/joke">Добави</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/Logout">Изход</Nav.Link>
+            </Nav.Item>
+          </>
+        }
+      </Nav>
+      <Logo />
+    </div>
+  );
+};
 
 export default Header;
