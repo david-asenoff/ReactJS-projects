@@ -38,7 +38,8 @@ class Jokes extends Component {
     return (
       <>
       <Row className="justify-content-md-center">
-{this.state.jokesFromCategory.map((joke, index) => {
+{this.state.jokesFromCategory.length>0?
+this.state.jokesFromCategory.map((joke, index) => {
   return <Joke key={joke.id} 
                 id={joke.id} 
                 content={joke.content} 
@@ -46,7 +47,8 @@ class Jokes extends Component {
                 createdOn={joke.createdOn} 
                 pictureUrl={joke.pictureUrl}
                 removeJoke={this.removeJoke.bind(this,joke.id)}/>
-})}
+}):
+"Все още няма вицове в тази категория"}
   </Row>
   </>
     );
