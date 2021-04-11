@@ -1,12 +1,11 @@
 import { React, useState, useContext, useEffect } from "react";
 import * as usersService from "../../services/usersService";
-import AuthContext from "../../contexts/AuthContext";
-import styles from './Login.module.css';
+import UserContext from "../../contexts/UserContext";
 
 const Login = ({ history }) => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const { userInfo } = useContext(AuthContext);  
+  const { userInfo } = useContext(UserContext);  
   const [user, setUser] = userInfo;
  
   const onSubmitLoginHandler = async (e) => {
@@ -19,7 +18,7 @@ const Login = ({ history }) => {
     history.push("/");
   };
   return (
-    <form onSubmit={onSubmitLoginHandler} className={styles.form}>
+    <form onSubmit={onSubmitLoginHandler}>
       <h1>Login</h1>
       <label htmlFor="Email">
         <p>Email</p>

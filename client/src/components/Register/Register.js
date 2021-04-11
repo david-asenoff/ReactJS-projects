@@ -1,5 +1,5 @@
 import {useState, useContext } from "react";
-import * as usersService from "../../services/usersService";
+import * as usersService from "./../../services/usersService";
 
 const Register = ({ history }) => {
   const [email, setEmail] = useState("");

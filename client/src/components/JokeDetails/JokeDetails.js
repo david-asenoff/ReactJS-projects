@@ -43,6 +43,7 @@ class JokeDetails extends Component {
       deleteById(this.state.joke.id)
     };
     const updateThisJoke = () => {
+      History.push("/")
       const editedText = document.getElementById('editedText').value;
       const id = this.state.joke.id;
       updateById({ id, editedText })

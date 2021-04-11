@@ -11,8 +11,8 @@ import JokeDetails from './components/JokeDetails/JokeDetails';
 import CreateJoke from './components/CreateJoke/CreateJoke';
 import history from './components/History/History';
 import isAuth from "./components/Hoc/isAuth";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
 import { useState, useEffect } from "react";
 import UserContext from "./contexts/UserContext";
 
