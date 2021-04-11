@@ -22,6 +22,7 @@ class JokeCategories extends Component {
 
   render() {
     return (
+      <>
       <div className={styles.rowcenter}>
 {this.state.jokeCategories.length>0?
 this.state.jokeCategories.map(x => {
@@ -29,6 +30,7 @@ this.state.jokeCategories.map(x => {
 }):
 <p>В тази категория все още няма вицове. Може да добавите от ТУК</p>}
 </div>
+</>
     );
   }
 }

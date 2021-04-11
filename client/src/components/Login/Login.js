@@ -1,6 +1,7 @@
 import { React, useState, useContext, useEffect } from "react";
 import * as usersService from "../../services/usersService";
 import UserContext from "../../contexts/UserContext";
+import { Card, Col, Button, Alert, Form } from 'react-bootstrap';
 
 const Login = ({ history }) => {
   const [Email, setEmail] = useState("");
@@ -18,30 +19,32 @@ const Login = ({ history }) => {
     history.push("/");
   };
   return (
-    <form onSubmit={onSubmitLoginHandler}>
+    <Form onSubmit={onSubmitLoginHandler}>
       <h1>Login</h1>
-      <label htmlFor="Email">
-        <p>Email</p>
-        <input
+      <Form.Group controlId="exampleForm.ControlInput1">
+    <Form.Label>Email address</Form.Label>
+        <Form.Control
           type="email"
           name="Email"
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </label>
-      <label htmlFor="Password">
-        <p>Password</p>
-        <input
-          type="text"
+      </Form.Group>
+      <Form.Group  controlId="formPlaintextPassword">
+    <Form.Label column sm="2">
+      Password
+    </Form.Label>
+        <Form.Control
+          type="password"
           name="Password"
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <div>
-        <input type="submit" value="Login" />
-      </div>
-    </form>
+      </Form.Group>
+      <Button variant="primary" type="submit">
+    Login
+  </Button>
+    </Form>
   );
 };
 

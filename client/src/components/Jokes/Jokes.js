@@ -36,6 +36,7 @@ class Jokes extends Component {
 
   render() {
     return (
+      <>
       <Row className="justify-content-md-center">
 {this.state.jokesFromCategory.map((joke, index) => {
   return <Joke key={joke.id} 
@@ -47,6 +48,7 @@ class Jokes extends Component {
                 removeJoke={this.removeJoke.bind(this,joke.id)}/>
 })}
   </Row>
+  </>
     );
   }
 }

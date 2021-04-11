@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import styles from './Footer.module.css';
+import Weather from '../../components/Weather/Weather';
 
 class Footer extends Component {
   constructor(props) {
@@ -7,9 +8,12 @@ class Footer extends Component {
       }    
   render() {
     return (
+      <>
+      <Weather />
       <footer className="shadowbox">
           <p>{this.props.name}</p>
       </footer>
+      </>
     );
   }
 }

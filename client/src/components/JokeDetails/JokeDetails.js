@@ -38,11 +38,13 @@ class JokeDetails extends Component {
     const deleteButtonTextSwitch = () => this.setState({ showDeleteAlert: !this.state.showDeleteAlert, deleteButtonText: this.state.deleteButtonText == "Изтрий" ? "Откажи" : "Изтрий" });
     const editFormHideSwitch = () => this.setState({ showEditForm: !this.state.showEditForm });
     const editButtonTextSwitch = () => this.setState({ showUpdateAlert: !this.state.showUpdateAlert, showEditForm: !this.state.showEditForm, editButtonText: this.state.editButtonText === "Редактирай" ? "Откажи" : "Редактирай" });
-    const deleteThisJoke = () => {
+    const deleteThisJoke = (event) => {
+      event.preventDefault();
       History.push("/")
       deleteById(this.state.joke.id)
     };
-    const updateThisJoke = () => {
+    const updateThisJoke = (event) => {
+      event.preventDefault();
       History.push("/")
       const editedText = document.getElementById('editedText').value;
       const id = this.state.joke.id;

@@ -1,5 +1,6 @@
 import {useState, useContext } from "react";
 import * as usersService from "./../../services/usersService";
+import { Card, Col, Button, Alert, Form } from 'react-bootstrap';
 
 const Register = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -13,33 +14,37 @@ const Register = ({ history }) => {
     history.push("/");
   };
   return (
-    <form onSubmit={onSubmitHandler}>
+    <Form onSubmit={onSubmitHandler}>
       <h1>Register</h1>
-      <label htmlFor="Email">
-        <p>Email</p>
-        <input
+      <Form.Group controlId="exampleForm.ControlInput1">
+    <Form.Label>Email address</Form.Label>
+        <Form.Control
           type="email"
           name="Email"
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </label>
-      <label htmlFor="Password">
-        <p>Password</p>
-        <input
-          type="text"
+       </Form.Group>
+       <Form.Group  controlId="formPlaintextPassword">
+    <Form.Label column sm="2">
+      Password
+    </Form.Label>
+        <Form.Control
+          type="password"
           name="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-      </label>
-      <label htmlFor="ConfirmPassword">
-        <p>Confirm Password</p>
-        <input type="text" name="Confirm Password" />
-      </label>
-      <div>
-        <input type="submit" value="Register" />
-      </div>
-    </form>
+      </Form.Group>
+      <Form.Group  controlId="formPlaintextPassword">
+    <Form.Label column sm="2">
+      Confirm password
+    </Form.Label>
+        <Form.Control type="pasword" name="Confirm Password" />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+    Submit
+  </Button>
+    </Form>
   );
 };
 

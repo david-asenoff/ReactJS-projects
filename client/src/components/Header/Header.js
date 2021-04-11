@@ -4,6 +4,7 @@ import { Link, Router } from "react-router-dom";
 import { Nav } from 'react-bootstrap';
 import styles from './Header.module.css';
 import Logo from "../Logo/Logo";
+import WellcomeMessage from './../../components/WellcomeMessage/WellcomeMessage';
 
 const Header = () => {
   const { authInfo } = useContext(UserContext);
@@ -36,6 +37,9 @@ const Header = () => {
             </Nav.Item>
           </>
         }
+        <Nav.Item>
+          <WellcomeMessage />
+        </Nav.Item>
       </Nav>
       <Logo />
     </div>
