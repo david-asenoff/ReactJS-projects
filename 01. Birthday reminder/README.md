@@ -1,3 +1,3 @@
-:mag_right: Idea
+:mag_right: Idea 
 
 ![](./idea.png)
