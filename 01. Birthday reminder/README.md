@@ -1,3 +1,5 @@
-## Idea
+#### Idea
 
-[https://uidesigndaily.com/](https://uidesigndaily.com/posts/sketch-birthdays-list-card-widget-day-1042)
+[uidesigndaily](https://uidesigndaily.com/posts/sketch-accordion-website-day-1175)
+
+![](./idea.png)
