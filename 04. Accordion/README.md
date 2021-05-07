@@ -1,5 +1,3 @@
-#### Idea
-
-[uidesigndaily](https://uidesigndaily.com/posts/sketch-accordion-website-day-1175)
+:mag_right: Idea
 
 ![](./idea.png);
