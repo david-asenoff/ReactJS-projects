@@ -25,11 +25,11 @@ export default ({ expense, setIsEditing }) => {
             event.preventDefault();
             if (isNewExpense) {
                 // create a new expense
-                NewExpense(dispatch, { description: description, amount: amount });
+                NewExpense(dispatch, { description: description, amount: Number(amount) });
             }
             else {
                 //edit expense
-                EditExpense(dispatch, {id: expense.id, description: description, amount: amount});
+                EditExpense(dispatch, {id: expense.id, description: description, amount: Number(amount)});
                 setIsEditing(false);
             }
         }}
