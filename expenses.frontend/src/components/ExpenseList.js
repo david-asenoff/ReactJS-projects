@@ -26,7 +26,7 @@ const ListRow = ({ expense }) => {
         <Row>
             <Col>{expense.description}</Col>
             <Col>${expense.amount}</Col>
-            <Button variant="warning" onClick={()=>setIsEditing(!isEditing)}>Edit</Button>
+            <Col><Button variant="warning" onClick={()=>setIsEditing(!isEditing)}>Edit</Button></Col>
         </Row>
         <hr/>
     </div>
