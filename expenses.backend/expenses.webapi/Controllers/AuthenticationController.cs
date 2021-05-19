@@ -32,5 +32,19 @@ namespace Expenses.WebApi.Controllers
                 return StatusCode(409, e.Message);
             }
         }
+        [HttpPost]
+        public async Task<IActionResult> SignIn(User user)
+        {
+            try
+            {
+                var result = await userService.SignIn(user);
+                return Ok(result);
+            }
+            catch (InvalidUserNamePasswordException e)
+            {
+
+                return StatusCode(401, e.Message);
+            }
+        }
     }
 }

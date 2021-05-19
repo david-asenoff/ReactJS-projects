@@ -33,7 +33,7 @@ namespace Expenses.Core
             {
                 Username = user.Username,
                 Token = "test token"
-            }
+            };
         }
 
         public async Task<AuthenticatedUser> SignUp(User user)
