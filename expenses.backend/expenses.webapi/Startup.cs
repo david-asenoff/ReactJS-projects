@@ -1,18 +1,12 @@
 using Expenses.Core;
 using Expenses.DB;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Expenses.WebApi
 {
@@ -33,11 +27,14 @@ namespace Expenses.WebApi
 
             services.AddDbContext<AppDbContext>();
             services.AddTransient<IExpensesServices, ExpensesServices>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IPasswordHasher, PasswordHasher>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "expenses.webapi", Version = "v1" });
             });
-            services.AddCors(options => {
+            services.AddCors(options =>
+            {
                 options.AddPolicy("ExpensesPolicy",
                     builder =>
                     {
