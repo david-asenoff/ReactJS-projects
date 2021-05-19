@@ -1,19 +1,37 @@
-import { newExpense, editExpense, deleteExpense } from '../app/expensesSlice';
-import {toast} from 'react-toastify';
+import {
+    newExpense, editExpense, deleteExpense, setExpensesError,
+    newExpenseError, editExpenseError, deleteExpenseError, setExpenses
+} from '../app/expensesSlice';
+import { toast } from 'react-toastify';
 
 const ToastMiddleware = () => next => action => {
-    switch(action.type){
+    switch (action.type) {
+        case setExpenses.type:
+            toast.success('Expenses are loaded successfully');
+            break;
         case newExpense.type:
             toast.success('New expense added successfully');
             break;
-            case editExpense.type:
+        case editExpense.type:
             toast.success('Expense is edited successfully');
             break;
-            case deleteExpense.type:
+        case deleteExpense.type:
             toast.success('Expense  is deleted successfully');
             break;
-            default:
-                break;
+        case setExpensesError.type:
+            toast.error('Error loading expenses');
+            break;
+        case newExpenseError.type:
+            toast.error('Error adding new expense');
+            break;
+        case editExpenseError.type:
+            toast.error('Error editing expense');
+            break;
+        case deleteExpenseError.type:
+            toast.error('Error deleting expense');
+            break;
+        default:
+            break;
     }
     return next(action);
 }
