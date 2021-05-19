@@ -1,5 +1,6 @@
 ﻿using Expenses.Core.CustomException;
 using Expenses.Core.DTO;
+using Expenses.Core.Utilities;
 using Expenses.DB;
 using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +33,7 @@ namespace Expenses.Core
             return new AuthenticatedUser
             {
                 Username = user.Username,
-                Token = "test token"
+                Token = JwtGenerator.GenerateUserToken(user.Username)
             };
         }
 
@@ -50,7 +51,7 @@ namespace Expenses.Core
             return new AuthenticatedUser
             {
                 Username = user.Username,
-                Token = "test token",
+                Token = JwtGenerator.GenerateUserToken(user.Username)
             };
         }
     }
