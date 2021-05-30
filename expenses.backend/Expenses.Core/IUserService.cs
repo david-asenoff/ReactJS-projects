@@ -6,7 +6,7 @@ namespace Expenses.Core
 {
     public interface IUserService
     {
-        Task<AuthenticatedUser> SignUp(User user);
-        Task<AuthenticatedUser> SignIn(User user);
+        Task<AuthenticatedUserDTO> SignUp(User user);
+        Task<AuthenticatedUserDTO> SignIn(User user);
     }
 }

@@ -1,4 +1,6 @@
-﻿using Expenses.DB;
+﻿using Expenses.Core.DTO;
+using Expenses.DB;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,42 +12,54 @@ namespace Expenses.Core
     public class ExpensesServices : IExpensesServices
     {
         private readonly AppDbContext context;
+        private readonly DB.User user;
 
-        public ExpensesServices(AppDbContext context)
+        public ExpensesServices(AppDbContext context,
+                                  IHttpContextAccessor httpContextAccessor)
         {
             this.context = context;
+            this.user = context.Users
+                .First(x => x.Username == httpContextAccessor.HttpContext.User.Identity.Name);
         }
 
-        public async Task<Expense> CreateExpenseAsync(Expense expense)
+        public async Task<ExpenseDTO> CreateExpenseAsync(Expense expense)
         {
+            expense.User = user;
             await context.Expenses.AddAsync(expense);
+            await context.SaveChangesAsync();
+            return (ExpenseDTO)expense;
+        }
+
+        public void DeleteExpense(ExpenseDTO expense)
+        {
+            var dbExpense = context.Expenses.First(x => x.User.Id == user.Id && x.Id == expense.Id);
+            context.Expenses.Remove(dbExpense);
+            context.SaveChanges();
+        }
+
+        public async Task<ExpenseDTO> EditExpenseAsync(ExpenseDTO expense)
+        {
+            var dbExpense = context.Expenses.First(x => x.User.Id == user.Id && x.Id == expense.Id);
+            dbExpense.Description = expense.Description;
+            dbExpense.Amount = expense.Amount;
             await context.SaveChangesAsync();
             return expense;
         }
 
-        public void DeleteExpense(Expense expense)
+        public ExpenseDTO GetExpense(int id)
         {
-            context.Expenses.Remove(expense);
-            context.SaveChanges();
+            return context.Expenses
+                .Where(x => x.User.Id == user.Id && x.Id == id)
+                .Select(x => (ExpenseDTO)x)
+                .First();
         }
 
-        public async Task<Expense> EditExpenseAsync(Expense expense)
+        public async Task<List<ExpenseDTO>> GetExpensesAsync()
         {
-            var dbExpense = await context.Expenses.FirstOrDefaultAsync(x => x.Id == expense.Id);
-            dbExpense.Description = expense.Description;
-            dbExpense.Amount = expense.Amount;
-            await context.SaveChangesAsync();
-            return dbExpense;
-        }
-
-        public Expense GetExpense(int id)
-        {
-            return context.Expenses.FirstOrDefault(x => x.Id == id);
-        }
-
-        public async Task<List<Expense>> GetExpensesAsync()
-        {
-            return await context.Expenses.ToListAsync();
+            return await context.Expenses
+                .Where(x => x.User.Id == user.Id)
+                .Select(x => (ExpenseDTO)x)
+                .ToListAsync();
         }
     }
 }

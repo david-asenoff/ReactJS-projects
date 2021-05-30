@@ -32,7 +32,7 @@ namespace Expenses.WebApi.Controllers
                 return StatusCode(409, e.Message);
             }
         }
-        [HttpPost]
+        [HttpPost("signin")]
         public async Task<IActionResult> SignIn(User user)
         {
             try

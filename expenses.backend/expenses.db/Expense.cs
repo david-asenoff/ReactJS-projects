@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Expenses.DB
@@ -15,6 +14,5 @@ namespace Expenses.DB
 
         [ForeignKey("UserId")]
         public User User { get; set; }
-
     }
 }

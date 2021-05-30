@@ -1,4 +1,5 @@
-﻿using Expenses.DB;
+﻿using Expenses.Core.DTO;
+using Expenses.DB;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,10 +9,10 @@ namespace Expenses.Core
 {
     public interface IExpensesServices
     {
-        Task<List<Expense>> GetExpensesAsync();
-        Expense GetExpense(int id);
-        Task<Expense> CreateExpenseAsync(Expense expense);
-        void DeleteExpense(Expense expense);
-        Task<Expense> EditExpenseAsync(Expense expense);
+        Task<List<ExpenseDTO>> GetExpensesAsync();
+        ExpenseDTO GetExpense(int id);
+        Task<ExpenseDTO> CreateExpenseAsync(Expense expense);
+        void DeleteExpense(ExpenseDTO expense);
+        Task<ExpenseDTO> EditExpenseAsync(ExpenseDTO expense);
     }
 }

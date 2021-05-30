@@ -1,4 +1,5 @@
 ﻿using Expenses.Core;
+using Expenses.Core.DTO;
 using Expenses.DB;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -38,14 +39,14 @@ namespace Expenses.WebApi.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteExpense(Expense expense)
+        public IActionResult DeleteExpense(ExpenseDTO expense)
         {
             expensesServices.DeleteExpense(expense);
             return Ok();
         }
 
         [HttpPut]
-        public async Task<IActionResult> EditExpense(Expense expense)
+        public async Task<IActionResult> EditExpense(ExpenseDTO expense)
         {
             var updatedExpense = await expensesServices.EditExpenseAsync(expense);
             return Ok(updatedExpense);
