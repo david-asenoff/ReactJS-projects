@@ -8,6 +8,16 @@ const axiosInstance = axios.create({
     baseURL: `${process.env.REACT_APP_BASE_URL}/Expenses`,
 })
 
+axiosInstance.interceptors.request.use((config) => {
+    config.headers = { authorization: 'Bearer ' + sessionStorage.getItem('token') };
+    return config;
+});
+
+axiosInstance.interceptors.request.use(config => {
+    config.headers = {authorization: 'Bearer' +  sessionStorage.getItem('token')};
+    return config;
+})
+
 export const GetExpenses = async (dispatch) => {
     try {
         // api call
