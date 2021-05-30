@@ -11,6 +11,6 @@ It supports User authentication and CRUD operations over the expenses of the log
 4. Edit expense or delete expense
 ![](./idea/EditOrDeleteExpense.png)
 5. Notifications
-![](./idea/Notifications.png)
+![](./idea/Notifications.jpg)
 
 
