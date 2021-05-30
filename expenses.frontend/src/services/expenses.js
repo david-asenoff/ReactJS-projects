@@ -5,7 +5,7 @@ import {
 import * as axios from 'axios';
 
 const axiosInstance = axios.create({
-    baseURL: 'https://localhost:44377/Expenses',
+    baseURL: `${process.env.REACT_APP_BASE_URL}/Expenses`,
 })
 
 export const GetExpenses = async (dispatch) => {
