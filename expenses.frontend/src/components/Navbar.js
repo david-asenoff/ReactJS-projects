@@ -7,7 +7,7 @@ const Navbar = () => {
     const { isLoggedIn } = useSelector(state => state.authenticationSlice);
     const dispatch = useDispatch();
 
-    return <Nav className='navbar' style={{ backgroundColor: 'lightblue' }}>
+    return <Nav className='navbar' style={{ backgroundColor: 'lightblue', padding:'20px' }}>
         <h1 style={{ fontFamily: 'Brush Script MT, cursive' }}>My Expenses</h1>
         {isLoggedIn
             ? <Button variant='link' href='/signin' onClick={() => { dispatch(logout()) }}>Log out</Button>
