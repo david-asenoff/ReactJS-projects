@@ -1,10 +1,6 @@
-# ReactJS-projects
-
-Welcome to ReactJS-projects, a collection of merged repositories containing various projects.
-
 ## Repository Introduction
 
-ReactJS-projects is a combination of two repositories: [Mini-Projects](https://github.com/david-asenoff/ReactJS-projects/tree/main/Mini-Projects) and [Reactive-Jokes](https://github.com/david-asenoff/ReactJS-projects/tree/main/Reactive-Jokes). It brings together projects showcasing different aspects of web development using ReactJS.
+Welcome to **ReactJS-projects**, a collection of merged repositories containing various projects.
 
 ## :eyeglasses: Mini-Projects Introduction
 **Mini-Projects** is a repository with various mini projects. Each project has its own directory, and you can find a Readme.md file in each of the projects along with an idea.png file illustrating the main idea and design. You can explore the projects in the [Mini-Projects directory](https://github.com/david-asenoff/ReactJS-projects/tree/main/Mini-Projects).
