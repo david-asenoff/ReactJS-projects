@@ -12,6 +12,8 @@ ReactJS-projects is a combination of two repositories: [Mini-Projects](https://g
 ## :eyeglasses: Reactive-Jokes Introduction
 **Reactive-Jokes** is a web application made with ReactJS. It supports user authentication and CRUD operations for jokes and joke categories. This application was created to demonstrate the connection between the server and client. You can find the code and project details in the [Reactive-Jokes directory](https://github.com/david-asenoff/ReactJS-projects/tree/main/Reactive-Jokes).
 
+## :eyeglasses: Expenses Introduction
+**Expenses** is a repository containing an expenses management application. It includes backend and frontend components for managing expenses and user authentication. You can find the code and project details in the [Expenses directory](https://github.com/david-asenoff/ReactJS-projects/tree/main/Expenses).
 
 Feel free to explore each project's directory for more details and instructions.
 Happy coding!
